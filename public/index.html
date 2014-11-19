@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>fequiz</title>
+	<link rel="stylesheet" href="resources/bootstrap.min.css">
+	<link rel="stylesheet" href="resources/bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="stylesheets/main.css">
+</head>
+
+<body>
+
+	<!-- Resources scripts -->
+	<script src="resources/jquery-1.11.1.js"></script>
+	<script src="resources/underscore.js"></script>
+	<script src="resources/backbone.js"></script>
+	<script src="resources/bootstrap.min.js"></script>
+
+	<!-- Templates -->
+
+		<!-- formTemplate -->
+		<script type="text/template" id="formTemplate">
+			<form role="form">
+				<input class = "btn btn-primary" type="submit" value="Save"/>
+			</form>
+		</script>
+		<!-- end of formTemplate -->
+
+		<!-- inputTextTemplate -->
+		<script type="text/template" id="inputTextTemplate">
+			<div class="title input-group">
+				<label class="bold" for="title">Title</label>
+				<input id="title" class="form-control" type="text" value="<%= title %>">
+			</div>
+
+			<div class="description input-group">
+				<label class="bold" for="description">Description</label>
+				<textarea name="description" id="description" class="form-control" rows="10"><%= description %></textarea>
+			</div>
+
+			<div class="internal-notes input-group">
+				<label class="bold" for="internal-notes">Internal Notes</label>
+				<% if (internalNotes === "none available") { %>
+					<textarea name="internal-notes" id="internal-notes" class="form-control" rows="1"></textarea>
+				<% } else { %>
+					<textarea name="internal-notes" id="internal-notes" class="form-control" rows="1"><%= internalNotes %></textarea>
+				<% } %>
+			</div>
+		</script>
+		<!-- end of inputTextTemplate -->
+
+		<!-- materialsTemplate -->
+		<script type="text/template" id="materialsTemplate">
+			<div class="materials input-group">
+				<label class="bold" for="materials">Materials</label>
+				<select name="materials" id="materials">
+					<% materialsList.forEach(function(material) { %>
+			         <% if (selectedMaterial.description === material) { %>
+			           <%= "<option value=" + material + " selected>" + material + "</option>" %>
+			         <% } else { %>
+			           <%= "<option value=" + material + ">" + material + "</option>" %>
+			         <% } %>
+			       <% }); %>
+				</select>
+			</div>
+
+			<div class="restricted input-group">	
+				<div class="item">
+					<% if(selectedMaterial.restricted === "Y") { %>
+						<input id="restricted" type="checkbox" name="restricted" value="Y" checked>
+					<% } else { %>
+						<input id="restricted" type="checkbox" name="restricted" value="Y">
+					<% } %>
+					<label class="bold" for="restricted">Check this box 
+						<span class="normal" >if the listing contains or may contain restricted materials</span>
+					</label>
+				</div>
+			</div>
+		</script>
+		<!-- end of materialsTemplate -->
+
+		<!-- measurementsTemplate -->
+		<script type="text/template" id="measurementsTemplate">
+			<div class="measurements input-group">
+				<label class="bold">Measurements</label>
+				<div id="measurementUnitDiv" class="item">
+					<p>Measurements are in:</p>
+					<br>
+					<% if (measurement.unit === "in") {  %>
+					  <input type="radio" name="measurementUnit" id="in" checked value="in">
+					  <label for="in">Inches (in)</label>
+					  <input type="radio" name="measurementUnit" id="cm" value="cm">
+					  <label for="in">Centimeters (cm)</label>
+					<% } else if (measurement.unit === "cm") { %>
+					  <input type="radio" name="measurementUnit" id="in" value="in">
+					  <label for="in">Inches (in)</label>
+
+					  <input type="radio" name="measurementUnit" id="cm" checked value="cm">
+					  <label for="in">Centimeters (cm)</label>
+					<% } else { %>
+					  <input type="radio" name="measurementUnit" id="in" value="in">
+					  <label for="in">Inches (in)</label>
+
+					  <input type="radio" name="measurementUnit" id="cm" value="cm">
+					  <label for="in">Centimeters (cm)</label>
+					<% } %>
+				</div>
+				<div id="measuredItemDiv" class="item">
+					<p>Measured item is:</p>
+					<% shapesArr.forEach(function(shape) { %>
+						<% if(measurement.shape === shape) { %>
+							<input type="radio" name="shape" id="<%= shape %>" value="<%= shape %>" checked>
+						<% } else { %>
+							<input type="radio" name="shape" id="<%= shape %>" value="<%= shape %>">
+						<% } %>
+			          <label for="<%=shape%>"><%=shape%></label>
+			        <% }); %>
+				</div>
+			</div>
+
+			<div id="variables" class="input-group item">
+				<div class="block-item">
+					<div class="length input-group">
+						<label for="length">Length:</label>
+						<div class="measurements-input">
+							
+							<input type="text" class="rectDim" id="length" value="<%= measurement.length %>" disabled>
+			                  
+							<span class="unit">
+								<% if (measurement.unit === "in") { %>
+			                    	<p>in.</p>
+			                 	<% } else if (measurement.unit === "cm") { %>
+			                    	<p>cm.</p>
+			                  	<% } else { %>
+			                    	<p></p>
+			                  	<% } %>
+							</span>
+
+						</div>
+					</div>
+					<div class="height input-group">
+						<label for="height">Height:</label>
+						<div class="measurements-input">
+							<input type="text" class="rectDim" id="height" value="<%= measurement.height %>" disabled>
+							<span class="unit">
+								<% if (measurement.unit === "in") { %>
+			                    	<p>in.</p>
+			                 	<% } else if (measurement.unit === "cm") { %>
+			                    	<p>cm.</p>
+			                  	<% } else { %>
+			                    	<p></p>
+			                  	<% } %>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="block-item">
+					<div class="depth input-group">
+						<label for="depth">Depth:</label>
+						<div class="measurements-input">
+							<input type="text" class="rectDim" id="depth" value="<%= measurement.depth %>" disabled>
+							<span class="unit">
+								<% if (measurement.unit === "in") { %>
+			                    	<p>in.</p>
+			                 	<% } else if (measurement.unit === "cm") { %>
+			                    	<p>cm.</p>
+			                  	<% } else { %>
+			                    	<p></p>
+			                  	<% } %>
+							</span>
+						</div>
+					</div>
+					<div class="diameter input-group">
+						<label for="diameter">Diameter:</label>
+						<div class="measurements-input">
+							<input type="text" class="circDim" id="diameter" value="<%= measurement.diameter %>" disabled>
+							<span class="unit">
+								<% if (measurement.unit === "in") { %>
+			                    	<p>in.</p>
+			                 	<% } else if (measurement.unit === "cm") { %>
+			                    	<p>cm.</p>
+			                  	<% } else { %>
+			                    	<p></p>
+			                  	<% } %>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</script>
+		<!-- end of materialsTemplate -->
+
+		<!-- conditionTemplate -->
+	 	<script type="text/template" id="conditionTemplate">
+		 	<label class="bold" for="condition">Condition 
+		 		<span class="normal italic">( Select one )</span>
+	 		</label>
+	   		<% options.forEach(function(option) { %>
+	 			<% if(option === condition.description) { %>
+	 				<input type="radio" name="condition" value="<%= option %>" checked>
+	 			<% } else { %>
+	 				<input type="radio" name="condition" value="<%= option %>">
+	 			<% } %>
+	 			<label for="<%= option %>"><%=option%></label>
+		   	<% }); %>
+	 	</script>
+	 	<!-- end of conditionTemplate -->
+
+ 	<!-- end of all Templates -->
+
+	<!-- Backbone MVC scripts -->
+	<script src="javascripts/main.js"></script>
+	<script src="javascripts/models/item.js"></script>
+	<script src="javascripts/collections/itemsList.js"></script>
+	<script src="javascripts/routes/router.js"></script>
+	<script src="javascripts/views/form.js"></script>
+	<script src="javascripts/views/inputText.js"></script>
+	<script src="javascripts/views/materials.js"></script>
+	<script src="javascripts/views/measurements.js"></script>
+	<script src="javascripts/views/condition.js"></script>
+
+</body>
+
+</html>
+
