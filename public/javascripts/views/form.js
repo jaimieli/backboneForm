@@ -123,7 +123,6 @@ App.Views = App.Views || {};
 			};
 			this.model.set(updatedObj)
 			console.log('this.model JSON: ', JSON.stringify(this.model));
-			console.log('this.collection: ', this.collection)
 		}
 	})
 })()
