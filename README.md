@@ -14,7 +14,7 @@ Using Backbone and jQuery take `item.json` and render a form similar to the form
 
 #### Instructions ####
 
-1. git clone this repo
+1. git clone repo
 
 1. cd into new project directory
 
