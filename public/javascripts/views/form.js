@@ -2,6 +2,7 @@ App.Views = App.Views || {};
 
 (function(){
 	'use strict';
+	var enums;
 	App.Views.FormView = Backbone.View.extend({
 		template:_.template($("#formTemplate").html()),
 		tagName: 'form',
@@ -17,8 +18,8 @@ App.Views = App.Views || {};
 			$.ajax({
 				url: '/json/enums.json'
 			}).done(function(data) {
-				App.Enums = data.itemEnums;
-				console.log('successfully retrieved enums.json -- App.Enums: ', App.Enums);
+				enums = data.itemEnums;
+				console.log('successfully retrieved enums.json -- enums: ', enums);
 			}).error(function(error) {
 				console.log('cannot retrieve enums.json -- Error: ', error);
 			});
@@ -37,7 +38,7 @@ App.Views = App.Views || {};
 		renderMaterialsView: function(){
 			var materialsView = new App.Views.MaterialsView({ 
 				attributes: {
-					materialsList: App.Enums.material,
+					materialsList: enums.material,
 					selectedMaterial: this.model.attributes.material
 				} 
 			});
@@ -48,7 +49,7 @@ App.Views = App.Views || {};
 			var measurementsView = new App.Views.MeasurementsView({ 
 				attributes: {
 					measurement: this.model.attributes.measurement,
-					shapesArr: App.Enums.measurement.shape
+					shapesArr: enums.measurement.shape
 				} 
 			})
 			measurementsView.render();
@@ -58,7 +59,7 @@ App.Views = App.Views || {};
 			var conditionView = new App.Views.ConditionView({
 				attributes: {
 					condition: this.model.attributes.condition,
-					options: App.Enums.condition.description
+					options: enums.condition.description
 				}
 			});
 			conditionView.render();
