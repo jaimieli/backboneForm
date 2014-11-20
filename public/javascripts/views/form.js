@@ -64,10 +64,10 @@ App.Views = App.Views || {};
 			conditionView.render();
 			this.$el.append(conditionView.$el);
 		},
-		renderSubmitView: function(){
-			var submitView = new App.Views.SubmitView({})
-			submitView.render();
-			this.$el.append(submitView.$el);
+		renderSubmitButtonView: function(){
+			var submitButtonView = new App.Views.SubmitButtonView({})
+			submitButtonView.render();
+			this.$el.append(submitButtonView.$el);
 		},
 		render: function() {
 			this.$el.html(this.template(this.model.toJSON()));
@@ -75,7 +75,7 @@ App.Views = App.Views || {};
 			this.renderMaterialsView();
 			this.renderMeasurementsView();
 			this.renderConditionView();	
-			this.renderSubmitView();
+			this.renderSubmitButtonView();
 		},
 		submit: function(event){
 			event.preventDefault();

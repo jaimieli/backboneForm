@@ -2,7 +2,7 @@ App.Views = App.Views || {};
 
 (function(){
 	'use strict';
-	App.Views.SubmitView = Backbone.View.extend({
+	App.Views.SubmitButtonView = Backbone.View.extend({
 		template:_.template($("#submitTemplate").html()),
 		tagName: 'div',
 		id: '',
