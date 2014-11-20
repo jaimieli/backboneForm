@@ -136,7 +136,7 @@
 						<label for="length">Length:</label>
 						<br>
 						<div class="measurements-input">
-							<input type="text" class="rectDim" id="length" value="<%= measurement.length %>" disabled>
+							<input type="text" class="rectDim" id="length" value="<%= measurement.length %>" disabled required>
 			                  
 							<span class="unit">
 								<% if (measurement.unit === "cm") { %>
@@ -154,7 +154,7 @@
 						<label for="height">Height:</label>
 						<br>
 						<div class="measurements-input">
-							<input type="text" class="rectDim" id="height" value="<%= measurement.height %>" disabled>
+							<input type="text" class="rectDim" id="height" value="<%= measurement.height %>" disabled required>
 							<span class="unit">
 								<% if (measurement.unit === "cm") { %>
 			                    	<p>cm.</p>
@@ -173,7 +173,7 @@
 						<label for="depth">Depth:</label>
 						<br>
 						<div class="measurements-input">
-							<input type="text" class="rectDim" id="depth" value="<%= measurement.depth %>" disabled>
+							<input type="text" class="rectDim" id="depth" value="<%= measurement.depth %>" disabled required>
 							<span class="unit">
 								<% if (measurement.unit === "cm") { %>
 			                    	<p>cm.</p>
@@ -189,7 +189,7 @@
 						<label for="diameter">Diameter:</label>
 						<br>
 						<div class="measurements-input">
-							<input type="text" class="circDim" id="diameter" value="<%= measurement.diameter %>" disabled>
+							<input type="text" class="circDim" id="diameter" value="<%= measurement.diameter %>" disabled required>
 							<span class="unit">
 								<% if (measurement.unit === "cm") { %>
 			                    	<p>cm.</p>

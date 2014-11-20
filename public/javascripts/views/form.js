@@ -78,6 +78,7 @@ App.Views = App.Views || {};
 			this.renderSubmitButtonView();
 		},
 		submit: function(event){
+			console.log('this.collection in submit: ', this.collection)
 			event.preventDefault();
 			console.log('submitting form');
 			var updatedObj;
@@ -122,6 +123,7 @@ App.Views = App.Views || {};
 			};
 			this.model.set(updatedObj)
 			console.log('this.model JSON: ', JSON.stringify(this.model));
+			console.log('this.collection: ', this.collection)
 		}
 	})
 })()
