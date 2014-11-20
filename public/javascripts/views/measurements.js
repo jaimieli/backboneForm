@@ -4,7 +4,6 @@ App.Views = App.Views || {};
 	'use strict';
 	App.Views.MeasurementsView = Backbone.View.extend({
 		template:_.template($("#measurementsTemplate").html()),
-		tagName: 'div',
 		events: {
 			'click #in': 'inUnit',
 			'click #cm': 'cmUnit',
