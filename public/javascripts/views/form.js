@@ -80,26 +80,45 @@ App.Views = App.Views || {};
 		submit: function(event){
 			event.preventDefault();
 			console.log('submitting form');
-			var updatedObj = {
-				"title": $('#title').val(),
-				"description": $('#description').val(),
-				"dealerInternalNotes": $('#internal-notes').val(),
-				"material": {
-					"description": $('#materials option:selected').val(),
-				  	"restricted": $('#restricted:checked').val() || 'N'
-				},
-				"measurement": {
-				  	"unit": $('input[name=measurementUnit]:checked', '#measurementUnitDiv').val(),
-				  	"shape": $('input[name=shape]:checked', '#measuredItemDiv').val(),
-				  	"length": $('#length').val(),
-				  	"depth": $('#depth').val(),
-				  	"height": $('#height').val(),
-				  	"diameter": $('#diameter').val()
-				},
-				"condition": {
-				  	"description": $('input[name=condition]:checked').val()
-				}
-			};
+			if ($('input[name=shape]:checked', '#measuredItemDiv').val() === 'Rectangular') {
+				var updatedObj = {
+					"title": $('#title').val(),
+					"description": $('#description').val(),
+					"dealerInternalNotes": $('#internal-notes').val(),
+					"material": {
+						"description": $('#materials option:selected').val(),
+					  	"restricted": $('#restricted:checked').val() || 'N'
+					},
+					"measurement": {
+					  	"unit": $('input[name=measurementUnit]:checked', '#measurementUnitDiv').val(),
+					  	"shape": $('input[name=shape]:checked', '#measuredItemDiv').val(),
+					  	"length": $('#length').val(),
+					  	"depth": $('#depth').val(),
+					  	"height": $('#height').val()
+					},
+					"condition": {
+					  	"description": $('input[name=condition]:checked').val()
+					}
+				};
+			} else if ($('input[name=shape]:checked', '#measuredItemDiv').val() === 'Circular'){
+				var updatedObj = {
+					"title": $('#title').val(),
+					"description": $('#description').val(),
+					"dealerInternalNotes": $('#internal-notes').val(),
+					"material": {
+						"description": $('#materials option:selected').val(),
+					  	"restricted": $('#restricted:checked').val() || 'N'
+					},
+					"measurement": {
+					  	"unit": $('input[name=measurementUnit]:checked', '#measurementUnitDiv').val(),
+					  	"shape": $('input[name=shape]:checked', '#measuredItemDiv').val(),
+					  	"diameter": $('#diameter').val()
+					},
+					"condition": {
+					  	"description": $('input[name=condition]:checked').val()
+					}
+				};
+			}
 			this.model.set(updatedObj)
 			console.log('this.model.attributes: ', this.model.attributes)
 		}
