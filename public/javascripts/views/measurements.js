@@ -5,8 +5,8 @@ App.Views = App.Views || {};
 	App.Views.MeasurementsView = Backbone.View.extend({
 		template:_.template($("#measurementsTemplate").html()),
 		events: {
-			'click #in': 'inUnit',
-			'click #cm': 'cmUnit',
+			'click #inches': 'inUnit',
+			'click #centimeters': 'cmUnit',
 			'click #Rectangular': 'rectangleDimensions',
 			'click #Circular': 'circleDimensions'
 		},
