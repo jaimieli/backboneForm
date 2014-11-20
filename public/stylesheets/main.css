@@ -23,7 +23,7 @@ input[type=radio],
 input[type=checkbox] {
 	margin-right: 5px;
 	margin-left: 15px;
-	vertical-align: text-top;
+	vertical-align: text-bottom;
 }
 
 #title, #description, #internal-notes {
@@ -39,7 +39,7 @@ input[type=checkbox] {
 	float: right;
 	margin-left: 5px;
 	margin-right: 5px;
-	vertical-align: text-bottom;
+	vertical-align: middle;
 }
 
 .inlineBlock * {
