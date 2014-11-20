@@ -1,3 +1,3 @@
 // connect to mongo here
-var mongo = require('mongodb');
+// var mongo = require('mongodb');
 

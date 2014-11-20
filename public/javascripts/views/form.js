@@ -79,7 +79,6 @@ App.Views = App.Views || {};
 			this.renderSubmitButtonView();
 		},
 		submit: function(event){
-			console.log('this.collection in submit: ', this.collection)
 			event.preventDefault();
 			console.log('submitting form');
 			var updatedObj;

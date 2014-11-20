@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var items = require('./routes/items');
+// var items = require('./routes/items');
 
 var app = express();
 
@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/', express.static(path.join(__dirname, 'public')));
 
-app.post('/items', items.addItem)
+// app.post('/items', items.addItem)
 
 module.exports = app;
 
