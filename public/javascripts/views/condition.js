@@ -6,7 +6,7 @@ App.Views = App.Views || {};
 		template:_.template($("#conditionTemplate").html()),
 		tagName: 'div',
 		id: '',
-		className: '',
+		className: 'group',
 		events: {
 
 		},

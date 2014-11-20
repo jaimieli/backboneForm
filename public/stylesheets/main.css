@@ -7,16 +7,18 @@ a {
   color: #00B7FF;
 }
 
-.bold{
+.bold {
 	font-weight: bold;
 }
 .italic {
 	font-style: italic;
 }
-.normal{
+.normal {
 	font-weight: normal;
 }
-
+.group {
+	margin: 20px auto;
+}
 input[type=radio],
 input[type=checkbox] {
 	margin-right: 5px;
@@ -26,4 +28,26 @@ input[type=checkbox] {
 
 #title, #description, #internal-notes {
 	width: 80%;
+}
+
+.variables input {
+	width: 100%;
+}
+
+.block * {
+	display: block;
+}
+
+.unit {
+	float: right;
+}
+
+.inlineBlock * {
+	display: inline-block;
+}
+
+.restricted {
+	margin-top: -20px;
+	margin-left: 0px;
+
 }

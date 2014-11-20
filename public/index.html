@@ -27,17 +27,17 @@
 
 		<!-- inputTextTemplate -->
 		<script type="text/template" id="inputTextTemplate">
-			<div class="title input-group">
+			<div class="title group">
 				<label class="bold" for="title">Title</label>
 				<input id="title" class="form-control" type="text" value="<%= title %>">
 			</div>
 
-			<div class="description input-group">
+			<div class="description group">
 				<label class="bold" for="description">Description</label>
 				<textarea name="description" id="description" class="form-control" rows="10"><%= description %></textarea>
 			</div>
 
-			<div class="internal-notes input-group">
+			<div class="internal-notes group">
 				<label class="bold" for="internal-notes">Internal Notes</label>
 				<% if (internalNotes === "none available") { %>
 					<textarea name="internal-notes" id="internal-notes" class="form-control" rows="1"></textarea>
@@ -50,7 +50,7 @@
 
 		<!-- materialsTemplate -->
 		<script type="text/template" id="materialsTemplate">
-			<div class="materials input-group">
+			<div class="materials group">
 				<label class="bold" for="materials">Materials</label>
 				<select name="materials" id="materials">
 					<% materialsList.forEach(function(material) { %>
@@ -63,8 +63,8 @@
 				</select>
 			</div>
 
-			<div class="restricted input-group">	
-				<div class="item">
+			<div class="restricted group">	
+				<div class="inlineBlock">
 					<% if(selectedMaterial.restricted === "Y") { %>
 						<input id="restricted" type="checkbox" name="restricted" value="Y" checked>
 					<% } else { %>
@@ -80,11 +80,10 @@
 
 		<!-- measurementsTemplate -->
 		<script type="text/template" id="measurementsTemplate">
-			<div class="measurements input-group">
+			<div class="measurements group">
 				<label class="bold">Measurements</label>
-				<div id="measurementUnitDiv" class="item">
+				<div id="measurementUnitDiv" class="inlineBlock">
 					<p>Measurements are in:</p>
-					<br>
 					<% if (measurement.unit === "in") {  %>
 					  <input type="radio" name="measurementUnit" id="in" checked value="in">
 					  <label for="in">Inches (in)</label>
@@ -104,7 +103,7 @@
 					  <label for="in">Centimeters (cm)</label>
 					<% } %>
 				</div>
-				<div id="measuredItemDiv" class="item">
+				<div id="measuredItemDiv" class="inlineBlock">
 					<p>Measured item is:</p>
 					<% shapesArr.forEach(function(shape) { %>
 						<% if(measurement.shape === shape) { %>
@@ -117,9 +116,9 @@
 				</div>
 			</div>
 
-			<div id="variables" class="input-group item">
-				<div class="block-item">
-					<div class="length input-group">
+			<div id="variables" class="group inlineBlock">
+				<div class="block">
+					<div class="length group">
 						<label for="length">Length:</label>
 						<div class="measurements-input">
 							
@@ -137,7 +136,7 @@
 
 						</div>
 					</div>
-					<div class="height input-group">
+					<div class="height group">
 						<label for="height">Height:</label>
 						<div class="measurements-input">
 							<input type="text" class="rectDim" id="height" value="<%= measurement.height %>" disabled>
@@ -153,8 +152,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="block-item">
-					<div class="depth input-group">
+				<div class="block">
+					<div class="depth group">
 						<label for="depth">Depth:</label>
 						<div class="measurements-input">
 							<input type="text" class="rectDim" id="depth" value="<%= measurement.depth %>" disabled>
@@ -169,7 +168,7 @@
 							</span>
 						</div>
 					</div>
-					<div class="diameter input-group">
+					<div class="diameter group">
 						<label for="diameter">Diameter:</label>
 						<div class="measurements-input">
 							<input type="text" class="circDim" id="diameter" value="<%= measurement.diameter %>" disabled>
@@ -194,14 +193,16 @@
 		 	<label class="bold" for="condition">Condition 
 		 		<span class="normal italic">( Select one )</span>
 	 		</label>
-	   		<% options.forEach(function(option) { %>
-	 			<% if(option === condition.description) { %>
-	 				<input type="radio" name="condition" value="<%= option %>" checked>
-	 			<% } else { %>
-	 				<input type="radio" name="condition" value="<%= option %>">
-	 			<% } %>
-	 			<label for="<%= option %>"><%=option%></label>
-		   	<% }); %>
+	 		<div class="inlineBlock">
+		   		<% options.forEach(function(option) { %>
+		 			<% if(option === condition.description) { %>
+		 				<input type="radio" name="condition" value="<%= option %>" checked>
+		 			<% } else { %>
+		 				<input type="radio" name="condition" value="<%= option %>">
+		 			<% } %>
+		 			<label for="<%= option %>"><%=option%></label>
+			   	<% }); %>
+		   	</div>
 	 	</script>
 	 	<!-- end of conditionTemplate -->
 
