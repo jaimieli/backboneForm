@@ -80,7 +80,6 @@ App.Views = App.Views || {};
 		},
 		submit: function(event){
 			event.preventDefault();
-			console.log('submitting form');
 			var updatedObj;
 			if ($('input[name=shape]:checked', '#measuredItemDiv').val() === 'Rectangular') {
 				updatedObj = {
