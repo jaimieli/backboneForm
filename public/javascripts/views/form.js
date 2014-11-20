@@ -32,7 +32,7 @@ App.Views = App.Views || {};
 				}
 			});
 			inputTextView.render();
-			this.$el.prepend(inputTextView.$el);
+			this.$el.append(inputTextView.$el);
 		},
 		renderMaterialsView: function(){
 			var materialsView = new App.Views.MaterialsView({ 
@@ -42,7 +42,7 @@ App.Views = App.Views || {};
 				} 
 			});
 			materialsView.render();
-			this.$el.prepend(materialsView.$el);
+			this.$el.append(materialsView.$el);
 		},
 		renderMeasurementsView: function(){
 			var measurementsView = new App.Views.MeasurementsView({ 
@@ -52,7 +52,7 @@ App.Views = App.Views || {};
 				} 
 			})
 			measurementsView.render();
-			this.$el.prepend(measurementsView.$el)
+			this.$el.append(measurementsView.$el)
 		},
 		renderConditionView: function(){
 			var conditionView = new App.Views.ConditionView({
@@ -62,14 +62,20 @@ App.Views = App.Views || {};
 				}
 			});
 			conditionView.render();
-			this.$el.prepend(conditionView.$el);
+			this.$el.append(conditionView.$el);
+		},
+		renderSubmitView: function(){
+			var submitView = new App.Views.SubmitView({})
+			submitView.render();
+			this.$el.append(submitView.$el);
 		},
 		render: function() {
 			this.$el.html(this.template(this.model.toJSON()));
-			this.renderConditionView();
-			this.renderMeasurementsView();
-			this.renderMaterialsView();
 			this.renderInputTextView();
+			this.renderMaterialsView();
+			this.renderMeasurementsView();
+			this.renderConditionView();	
+			this.renderSubmitView();
 		},
 		submit: function(event){
 			event.preventDefault();
@@ -96,7 +102,6 @@ App.Views = App.Views || {};
 			};
 			this.model.set(updatedObj)
 			console.log('this.model.attributes: ', this.model.attributes)
-
 		}
 	})
 })()

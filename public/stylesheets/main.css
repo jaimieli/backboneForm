@@ -17,6 +17,13 @@ a {
 	font-weight: normal;
 }
 
+input[type=radio],
+input[type=checkbox] {
+	margin-right: 5px;
+	margin-left: 15px;
+	vertical-align: text-top;
+}
+
 #title, #description, #internal-notes {
 	width: 80%;
 }
