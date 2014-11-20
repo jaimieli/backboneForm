@@ -120,7 +120,7 @@
 
 						<% } else { %>
 
-							<input type="radio" name="shape" id="<%= shape %>" value="<%= shape %>">
+							<input type="radio" name="shape" id="<%= shape %>" value="<%= shape %>" required>
 
 						<% } %>
 			          <label for="<%=shape%>"><%=shape%></label>
@@ -139,10 +139,10 @@
 							<input type="text" class="rectDim" id="length" value="<%= measurement.length %>" disabled>
 			                  
 							<span class="unit">
-								<% if (measurement.unit === "in") { %>
-			                    	<p>in.</p>
-			                 	<% } else if (measurement.unit === "cm") { %>
+								<% if (measurement.unit === "cm") { %>
 			                    	<p>cm.</p>
+			                 	<% } else if (measurement.unit === "in") { %>
+			                    	<p>in.</p>
 			                  	<% } else { %>
 			                    	<p></p>
 			                  	<% } %>
@@ -156,10 +156,10 @@
 						<div class="measurements-input">
 							<input type="text" class="rectDim" id="height" value="<%= measurement.height %>" disabled>
 							<span class="unit">
-								<% if (measurement.unit === "in") { %>
-			                    	<p>in.</p>
-			                 	<% } else if (measurement.unit === "cm") { %>
+								<% if (measurement.unit === "cm") { %>
 			                    	<p>cm.</p>
+			                 	<% } else if (measurement.unit === "in") { %>
+			                    	<p>in.</p>
 			                  	<% } else { %>
 			                    	<p></p>
 			                  	<% } %>
@@ -175,10 +175,10 @@
 						<div class="measurements-input">
 							<input type="text" class="rectDim" id="depth" value="<%= measurement.depth %>" disabled>
 							<span class="unit">
-								<% if (measurement.unit === "in") { %>
-			                    	<p>in.</p>
-			                 	<% } else if (measurement.unit === "cm") { %>
+								<% if (measurement.unit === "cm") { %>
 			                    	<p>cm.</p>
+			                 	<% } else if (measurement.unit === "in") { %>
+			                    	<p>in.</p>
 			                  	<% } else { %>
 			                    	<p></p>
 			                  	<% } %>
@@ -191,10 +191,10 @@
 						<div class="measurements-input">
 							<input type="text" class="circDim" id="diameter" value="<%= measurement.diameter %>" disabled>
 							<span class="unit">
-								<% if (measurement.unit === "in") { %>
-			                    	<p>in.</p>
-			                 	<% } else if (measurement.unit === "cm") { %>
+								<% if (measurement.unit === "cm") { %>
 			                    	<p>cm.</p>
+			                 	<% } else if (measurement.unit === "in") { %>
+			                    	<p>in.</p>
 			                  	<% } else { %>
 			                    	<p></p>
 			                  	<% } %>

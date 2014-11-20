@@ -80,8 +80,9 @@ App.Views = App.Views || {};
 		submit: function(event){
 			event.preventDefault();
 			console.log('submitting form');
+			var updatedObj;
 			if ($('input[name=shape]:checked', '#measuredItemDiv').val() === 'Rectangular') {
-				var updatedObj = {
+				updatedObj = {
 					"title": $('#title').val(),
 					"description": $('#description').val(),
 					"dealerInternalNotes": $('#internal-notes').val(),
@@ -101,7 +102,7 @@ App.Views = App.Views || {};
 					}
 				};
 			} else if ($('input[name=shape]:checked', '#measuredItemDiv').val() === 'Circular'){
-				var updatedObj = {
+				updatedObj = {
 					"title": $('#title').val(),
 					"description": $('#description').val(),
 					"dealerInternalNotes": $('#internal-notes').val(),
@@ -118,9 +119,9 @@ App.Views = App.Views || {};
 					  	"description": $('input[name=condition]:checked').val()
 					}
 				};
-			}
+			};
 			this.model.set(updatedObj)
-			console.log('this.model.attributes: ', this.model.attributes)
+			console.log('this.model JSON: ', JSON.stringify(this.model));
 		}
 	})
 })()

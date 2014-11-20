@@ -5,11 +5,7 @@ App.Views = App.Views || {};
 	App.Views.ConditionView = Backbone.View.extend({
 		template:_.template($("#conditionTemplate").html()),
 		tagName: 'div',
-		id: '',
 		className: 'group',
-		events: {
-
-		},
 		render: function() {
 			this.$el.html(this.template(this.attributes));
 			return this;
