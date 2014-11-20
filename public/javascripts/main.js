@@ -7,7 +7,6 @@ window.App = {
 		'use strict';
 		new App.Routers.Router();
 		Backbone.history.start({pushState: true});
-		console.log('initialized app')
 	}
 }
 
