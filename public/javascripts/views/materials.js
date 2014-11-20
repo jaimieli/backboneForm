@@ -5,11 +5,7 @@ App.Views = App.Views || {};
 	App.Views.MaterialsView = Backbone.View.extend({
 		template:_.template($("#materialsTemplate").html()),
 		tagName: 'div',
-		id: '',
 		className: '',
-		events: {
-
-		},
 		render: function() {
 			this.$el.html(this.template(this.attributes));
 			return this;

@@ -5,8 +5,6 @@ App.Views = App.Views || {};
 	App.Views.FormView = Backbone.View.extend({
 		template:_.template($("#formTemplate").html()),
 		tagName: 'form',
-		id: '',
-		className: '',
 		events: {
 			'submit': 'submit'
 		},
