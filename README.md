@@ -11,3 +11,15 @@ Using Backbone and jQuery take `item.json` and render a form similar to the form
 1. Pressing the Save button should dump an updated and/or edited item.json to the browser console to demonstrate that it could be persisted to the server.
 
 1. As mentioned earlier, there is a state condition that must be handled. See 1stdibs_fe_quiz.jpg for the details. 
+
+#### Instructions ####
+
+1. git clone
+
+1. cd into directory
+
+1. npm install
+
+1. npm start
+
+1. go to http://localhost:3001
